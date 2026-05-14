@@ -7,8 +7,6 @@
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { background: #060e1c; font-family: 'Georgia', serif; color: #c8b98a; min-height: 100vh; }
-
-  /* HEADER */
   .header { background: #0d1e3a; border-bottom: 1px solid #BA7517; padding: 16px 32px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
   .header-brand { font-size: 13px; letter-spacing: 4px; color: #BA7517; }
   .header-center { font-size: 11px; color: #4a6a8a; letter-spacing: 2px; }
@@ -16,21 +14,13 @@
   .live-badge { display: flex; align-items: center; gap: 6px; font-size: 10px; color: #BA7517; letter-spacing: 2px; }
   .live-dot { width: 6px; height: 6px; border-radius: 50%; background: #BA7517; animation: pulse 2s infinite; }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
-  .refresh-btn { font-size: 10px; letter-spacing: 2px; padding: 6px 14px; background: transparent; border: 0.5px solid #BA7517; color: #BA7517; border-radius: 2px; cursor: pointer; font-family: 'Georgia', serif; transition: background 0.2s; }
-  .refresh-btn:hover { background: #1a2d4a; }
-
-  /* METRICS BAR */
   .metrics-bar { background: #0a1628; border-bottom: 0.5px solid #1e3a5f; display: grid; grid-template-columns: repeat(5, 1fr); }
   .metric { padding: 14px 24px; border-right: 0.5px solid #1e3a5f; }
   .metric:last-child { border-right: none; }
   .metric-label { font-size: 9px; letter-spacing: 2px; color: #4a6a8a; margin-bottom: 4px; }
   .metric-value { font-size: 22px; color: #f0e6cc; }
   .metric-sub { font-size: 10px; color: #2a4a6a; margin-top: 2px; }
-
-  /* MAIN LAYOUT */
-  .main { max-width: 1400px; margin: 0 auto; padding: 32px; display: grid; grid-template-columns: 1fr 380px; gap: 24px; }
-
-  /* FEATURED PICK */
+  .main { max-width: 1400px; margin: 0 auto; padding: 32px; display: grid; grid-template-columns: 1fr 400px; gap: 24px; }
   .featured-card { background: #0b1628; border: 0.5px solid #1e3a5f; border-radius: 4px; overflow: hidden; }
   .featured-label { background: #0d1e3a; padding: 10px 20px; font-size: 9px; letter-spacing: 3px; color: #BA7517; border-bottom: 0.5px solid #1e3a5f; display: flex; justify-content: space-between; align-items: center; }
   .featured-body { padding: 24px; }
@@ -42,14 +32,10 @@
   .feat-odds-detail { flex: 1; }
   .feat-book { font-size: 12px; color: #4a6a8a; margin-bottom: 4px; letter-spacing: 1px; }
   .feat-gap { font-size: 14px; color: #4ade80; margin-bottom: 4px; }
-  .feat-conf { display: inline-flex; align-items: center; gap: 8px; }
   .conf-pill { font-size: 9px; letter-spacing: 2px; padding: 4px 12px; border-radius: 2px; }
   .conf-high { background: #0a2a1a; color: #4ade80; border: 0.5px solid #4ade80; }
   .conf-med { background: #2a1f0a; color: #BA7517; border: 0.5px solid #BA7517; }
-  .conf-low { background: #1a1a1a; color: #555; border: 0.5px solid #333; }
-
   .feat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-  .stat-section { margin-bottom: 20px; }
   .stat-head { font-size: 9px; letter-spacing: 3px; color: #BA7517; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 0.5px solid #1e3a5f; }
   .stat-row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 0.5px solid #0d1e3a; }
   .stat-row:last-child { border-bottom: none; }
@@ -57,15 +43,12 @@
   .stat-val { font-size: 11px; color: #c8b98a; }
   .stat-val.green { color: #4ade80; }
   .stat-val.gold { color: #BA7517; }
+  .stat-section { margin-bottom: 20px; }
   .analysis-head { font-size: 9px; letter-spacing: 3px; color: #BA7517; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 0.5px solid #1e3a5f; }
   .analysis-text { font-size: 13px; color: #7a9abf; line-height: 1.9; }
   .analysis-text strong { color: #c8b98a; font-weight: normal; }
-
-  /* SIDEBAR */
   .sidebar { display: flex; flex-direction: column; gap: 16px; }
   .sidebar-label { font-size: 9px; letter-spacing: 3px; color: #BA7517; padding-bottom: 8px; border-bottom: 0.5px solid #1e3a5f; margin-bottom: 4px; }
-
-  /* SMALL PICK CARDS */
   .pick-card { background: #0b1628; border: 0.5px solid #1e3a5f; border-radius: 4px; overflow: hidden; cursor: pointer; transition: border-color 0.2s; }
   .pick-card:hover { border-color: #BA7517; }
   .pick-card.active { border-color: #BA7517; }
@@ -82,375 +65,293 @@
   .pick-gap-sm { font-size: 10px; color: #4ade80; margin-top: 2px; }
   .pick-prob-row { display: flex; justify-content: space-between; padding: 8px 16px; background: #071020; border-top: 0.5px solid #1e3a5f; font-size: 10px; color: #4a6a8a; letter-spacing: 1px; }
   .pick-prob-val { color: #4ade80; }
-
-  /* EXPANDED DETAIL */
   .pick-detail { background: #071020; border-top: 0.5px solid #1e3a5f; padding: 0 16px; max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s; }
   .pick-detail.open { max-height: 500px; padding: 14px 16px; }
   .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .detail-head { font-size: 9px; letter-spacing: 2px; color: #BA7517; margin-bottom: 8px; padding-bottom: 4px; border-bottom: 0.5px solid #1e3a5f; }
   .detail-analysis { font-size: 11px; color: #6a8aaa; line-height: 1.8; }
   .detail-analysis strong { color: #c8b98a; font-weight: normal; }
-  .expand-row { padding: 8px 16px; border-top: 0.5px solid #1e3a5f; font-size: 9px; color: #2a4a6a; letter-spacing: 2px; display: flex; justify-content: space-between; align-items: center; }
+  .expand-row { padding: 8px 16px; border-top: 0.5px solid #1e3a5f; font-size: 9px; color: #2a4a6a; letter-spacing: 2px; display: flex; justify-content: space-between; align-items: center; transition: color 0.2s; }
   .expand-row:hover { color: #4a6a8a; }
-
-  /* LOADING / ERROR */
-  .loading { text-align: center; padding: 80px; font-size: 12px; color: #4a6a8a; letter-spacing: 2px; }
-  .error-box { background: #1a0a0a; border: 0.5px solid #8B0000; border-radius: 4px; padding: 24px; margin: 32px; }
-  .error-title { font-size: 12px; color: #ff6b6b; letter-spacing: 2px; margin-bottom: 12px; }
-  .error-msg { font-size: 12px; color: #6a4a4a; line-height: 1.8; }
-  .error-cmd { background: #0d0d0d; padding: 12px 16px; border-radius: 2px; font-family: 'Courier New', monospace; font-size: 12px; color: #BA7517; margin-top: 12px; border: 0.5px solid #2a1a1a; }
-
-  /* FOOTER */
-  .footer { background: #0d1e3a; border-top: 1px solid #1e3a5f; padding: 16px 32px; display: flex; justify-content: space-between; align-items: center; margin-top: 32px; }
+  .footer { background: #0d1e3a; padding: 16px 32px; border-top: 1px solid #1e3a5f; display: flex; justify-content: space-between; align-items: center; margin-top: 32px; }
   .footer-disc { font-size: 10px; color: #2a4a6a; letter-spacing: 1px; }
   .footer-gen { font-size: 10px; color: #2a4a6a; }
-
-  /* SPORT FILTER */
-  .filter-row { display: flex; gap: 8px; margin-bottom: 20px; }
-  .filter-btn { font-size: 9px; letter-spacing: 2px; padding: 5px 14px; background: transparent; border: 0.5px solid #1e3a5f; color: #4a6a8a; border-radius: 2px; cursor: pointer; font-family: 'Georgia', serif; transition: all 0.2s; }
-  .filter-btn:hover, .filter-btn.active { border-color: #BA7517; color: #BA7517; }
-
-  /* CONFIDENCE RING */
-  .conf-ring-wrap { display: inline-flex; align-items: center; gap: 8px; }
-  .conf-score { font-size: 11px; color: #4a6a8a; }
 </style>
 </head>
 <body>
 
 <div class="header">
   <span class="header-brand">THE EDGE // VALUE REPORT</span>
-  <span class="header-center" id="header-date">LOADING...</span>
+  <span class="header-center">THURSDAY, MAY 14 2026</span>
   <div class="header-right">
     <span class="live-badge"><span class="live-dot"></span>LIVE DATA</span>
-    <button class="refresh-btn" onclick="loadData()">↺ REFRESH</button>
   </div>
 </div>
 
-<div class="metrics-bar" id="metrics-bar">
-  <div class="metric"><div class="metric-label">STATUS</div><div class="metric-value" style="font-size:14px;padding-top:4px">LOADING</div><div class="metric-sub">fetching data</div></div>
+<div class="metrics-bar">
+  <div class="metric"><div class="metric-label">PICKS TODAY</div><div class="metric-value">5</div><div class="metric-sub">of 32 flagged</div></div>
+  <div class="metric"><div class="metric-label">TOP GAP</div><div class="metric-value">+10.2pp</div><div class="metric-sub">DET vs NYM</div></div>
+  <div class="metric"><div class="metric-label">BOOKS SCANNED</div><div class="metric-value">11</div><div class="metric-sub">licensed US only</div></div>
+  <div class="metric"><div class="metric-label">SPORT</div><div class="metric-value" style="font-size:16px;padding-top:4px">MLB</div><div class="metric-sub">tomorrow</div></div>
+  <div class="metric"><div class="metric-label">MODEL</div><div class="metric-value" style="font-size:16px;padding-top:4px">v3</div><div class="metric-sub">pitcher + lineup</div></div>
 </div>
 
-<div id="main-content">
-  <div class="loading">LOADING PICKS...</div>
+<div class="main">
+  <div>
+    <div class="featured-card">
+      <div class="featured-label">
+        <span>PICK OF THE DAY — HIGHEST CONFIDENCE</span>
+        <span class="conf-pill conf-high">87% CONFIDENCE</span>
+      </div>
+      <div class="featured-body">
+        <div class="feat-game">MLB · KANSAS CITY ROYALS vs CHICAGO WHITE SOX · THU MAY 14 · 7:41 PM ET</div>
+        <div class="feat-team">Chicago White Sox</div>
+        <div class="feat-bet-type">moneyline · to win</div>
+        <div class="feat-odds-row">
+          <div class="feat-odds">+120</div>
+          <div class="feat-odds-detail">
+            <div class="feat-book">BEST PRICE: FANDUEL / THESCORE BET</div>
+            <div class="feat-gap">+9.5pp model edge</div>
+            <span class="conf-pill conf-high">HIGH CONFIDENCE</span>
+          </div>
+        </div>
+        <div class="feat-grid">
+          <div>
+            <div class="stat-section">
+              <div class="stat-head">PROBABILITY BREAKDOWN</div>
+              <div class="stat-row"><span class="stat-key">FanDuel implied prob</span><span class="stat-val">45.5%</span></div>
+              <div class="stat-row"><span class="stat-key">Market average</span><span class="stat-val">46.4%</span></div>
+              <div class="stat-row"><span class="stat-key">Model probability</span><span class="stat-val green">55.0%</span></div>
+              <div class="stat-row"><span class="stat-key">Value gap</span><span class="stat-val gold">+9.5pp</span></div>
+              <div class="stat-row"><span class="stat-key">Books pricing as underdog</span><span class="stat-val">7 of 7 books</span></div>
+            </div>
+            <div class="stat-section">
+              <div class="stat-head">PITCHING MATCHUP</div>
+              <div class="stat-row"><span class="stat-key">KC starter (away)</span><span class="stat-val">Seth Lugo</span></div>
+              <div class="stat-row"><span class="stat-key">Lugo season stats</span><span class="stat-val">3-1 · 3.50 ERA · 1.17 WHIP</span></div>
+              <div class="stat-row"><span class="stat-key">Lugo K/9 · BB/9</span><span class="stat-val">9.13 · 4.47</span></div>
+              <div class="stat-row"><span class="stat-key">CWS starter (home)</span><span class="stat-val">Noah Schultz</span></div>
+              <div class="stat-row"><span class="stat-key">Schultz season stats</span><span class="stat-val">2-1 · 4.89 ERA · 1.57 WHIP</span></div>
+              <div class="stat-row"><span class="stat-key">Schultz K/9 · BB/9</span><span class="stat-val">6.43 · 4.37</span></div>
+            </div>
+            <div class="stat-section">
+              <div class="stat-head">TEAM RECORDS</div>
+              <div class="stat-row"><span class="stat-key">Kansas City Royals</span><span class="stat-val">19-24 (.442)</span></div>
+              <div class="stat-row"><span class="stat-key">Chicago White Sox</span><span class="stat-val green">21-21 (.500)</span></div>
+              <div class="stat-row"><span class="stat-key">CWS home advantage</span><span class="stat-val green">+4.0pp applied</span></div>
+            </div>
+          </div>
+          <div>
+            <div class="analysis-head">EDGE ANALYSIS</div>
+            <div class="analysis-text">
+              The market is significantly mispricing this game. Our model assigns <strong>Chicago White Sox a 55.0% true win probability</strong> — 8.6 percentage points above the market average of 46.4%. Every single licensed book in our network prices the White Sox as an underdog tonight, creating a rare unanimous mispricing.<br><br>
+              The pitching matchup drives most of this edge. <strong>Seth Lugo carries a 3.50 ERA and 1.17 WHIP</strong> through 8 starts — a demonstrably above-average performance. Opposing him is <strong>Noah Schultz at 4.89 ERA and 1.57 WHIP</strong>, numbers that rank in the bottom third of qualified starters this season. Lugo's strikeout rate of 9.13 per 9 innings versus Schultz's 6.43 represents a significant difference in ability to limit damage.<br><br>
+              Chicago also holds a better season record at .500 versus Kansas City's .442, and the White Sox benefit from playing at home. <strong>FanDuel and theScore Bet both offer +120</strong> — the best available price. <strong>Highest conviction play of the day.</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sidebar">
+    <div class="sidebar-label">PICKS #2 — #5</div>
+
+    <div class="pick-card" id="card-p2">
+      <div class="pick-header" onclick="togglePick('p2')">
+        <div class="pick-left">
+          <div class="pick-number">PICK #2 · <span class="conf-pill conf-high" style="font-size:8px">HIGH 84%</span></div>
+          <div class="pick-game-sm">MLB · DETROIT TIGERS vs NEW YORK METS</div>
+          <div class="pick-team-sm">Detroit Tigers</div>
+          <div class="pick-pitcher">SP: <span>Framber Valdez</span> vs <span>Christian Scott</span></div>
+        </div>
+        <div class="pick-right">
+          <div class="pick-odds-sm">+152</div>
+          <div class="pick-book-sm">FanDuel</div>
+          <div class="pick-gap-sm">+10.2pp</div>
+        </div>
+      </div>
+      <div class="pick-prob-row">
+        <span>BOOK 39.7%</span><span>MARKET 40.8%</span><span>MODEL <span class="pick-prob-val">49.8%</span></span>
+      </div>
+      <div class="pick-detail" id="detail-p2">
+        <div class="detail-grid">
+          <div>
+            <div class="detail-head">STATS</div>
+            <div class="stat-row"><span class="stat-key">Best price</span><span class="stat-val gold">+152 FanDuel</span></div>
+            <div class="stat-row"><span class="stat-key">Value gap</span><span class="stat-val gold">+10.2pp</span></div>
+            <div class="stat-row"><span class="stat-key">Book implied</span><span class="stat-val">39.7%</span></div>
+            <div class="stat-row"><span class="stat-key">Model prob</span><span class="stat-val green">49.8%</span></div>
+            <div class="stat-row"><span class="stat-key">DET record</span><span class="stat-val">23-20 (.535)</span></div>
+            <div class="stat-row"><span class="stat-key">NYM record</span><span class="stat-val">24-18 (.571)</span></div>
+            <div class="stat-row"><span class="stat-key">Game time</span><span class="stat-val">1:11 PM ET</span></div>
+          </div>
+          <div>
+            <div class="detail-head">ANALYSIS</div>
+            <div class="detail-analysis">
+              The <strong>largest raw gap of the day at +10.2pp</strong>. Our model sees Detroit as a near coin-flip at 49.8% true win probability, yet every book prices them as a 40% underdog. The Mets are favored on their slightly better record, but Detroit's 23-20 record reflects a genuinely competitive team. <strong>Framber Valdez opposing Christian Scott</strong> makes this a high-quality pitching matchup. At +152 on FanDuel, Detroit offers exceptional value — you're getting paid like a 39% shot on what our model believes is a 50-50 game. <strong>High conviction.</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="expand-row" onclick="togglePick('p2')">
+        <span id="expand-label-p2">▾ EXPAND FULL ANALYSIS</span>
+        <span style="color:#2a4a6a">1:11 PM ET · Thu May 14</span>
+      </div>
+    </div>
+
+    <div class="pick-card" id="card-p3">
+      <div class="pick-header" onclick="togglePick('p3')">
+        <div class="pick-left">
+          <div class="pick-number">PICK #3 · <span class="conf-pill conf-high" style="font-size:8px">HIGH 74%</span></div>
+          <div class="pick-game-sm">MLB · WASHINGTON NATIONALS vs CINCINNATI REDS</div>
+          <div class="pick-team-sm">Washington Nationals</div>
+          <div class="pick-pitcher">SP: <span>Jake Irvin (2.12 ERA)</span> vs <span>Nick Lodolo</span></div>
+        </div>
+        <div class="pick-right">
+          <div class="pick-odds-sm">+140</div>
+          <div class="pick-book-sm">theScore Bet</div>
+          <div class="pick-gap-sm">+5.3pp</div>
+        </div>
+      </div>
+      <div class="pick-prob-row">
+        <span>BOOK 41.7%</span><span>MARKET 42.4%</span><span>MODEL <span class="pick-prob-val">46.9%</span></span>
+      </div>
+      <div class="pick-detail" id="detail-p3">
+        <div class="detail-grid">
+          <div>
+            <div class="detail-head">STATS</div>
+            <div class="stat-row"><span class="stat-key">Best price</span><span class="stat-val gold">+140 theScore Bet</span></div>
+            <div class="stat-row"><span class="stat-key">Value gap</span><span class="stat-val gold">+5.3pp</span></div>
+            <div class="stat-row"><span class="stat-key">Book implied</span><span class="stat-val">41.7%</span></div>
+            <div class="stat-row"><span class="stat-key">Model prob</span><span class="stat-val green">46.9%</span></div>
+            <div class="stat-row"><span class="stat-key">Irvin ERA / WHIP</span><span class="stat-val green">2.12 / 1.03</span></div>
+            <div class="stat-row"><span class="stat-key">Irvin record</span><span class="stat-val green">4-1</span></div>
+            <div class="stat-row"><span class="stat-key">Game time</span><span class="stat-val">12:41 PM ET</span></div>
+          </div>
+          <div>
+            <div class="detail-head">ANALYSIS</div>
+            <div class="detail-analysis">
+              <strong>Jake Irvin is pitching at an elite level</strong> — a 2.12 ERA and 1.03 WHIP over 8 starts puts him among the top starters in baseball right now. The books are treating Washington as a 41-42% underdog despite sending one of the game's hottest arms to the mound. Our model corrects for this at 46.9% true probability. <strong>theScore Bet's +140 is the best price available</strong> — the only book offering meaningful value above the market. A 4-1 pitcher with a sub-2.20 ERA deserves more respect than these lines suggest.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="expand-row" onclick="togglePick('p3')">
+        <span id="expand-label-p3">▾ EXPAND FULL ANALYSIS</span>
+        <span style="color:#2a4a6a">12:41 PM ET · Thu May 14</span>
+      </div>
+    </div>
+
+    <div class="pick-card" id="card-p4">
+      <div class="pick-header" onclick="togglePick('p4')">
+        <div class="pick-left">
+          <div class="pick-number">PICK #4 · <span class="conf-pill conf-med" style="font-size:8px">MED 68%</span></div>
+          <div class="pick-game-sm">MLB · SAN DIEGO PADRES vs MILWAUKEE BREWERS</div>
+          <div class="pick-team-sm">San Diego Padres</div>
+          <div class="pick-pitcher">SP: <span>Michael King</span> vs <span>Jacob Misiorowski</span></div>
+        </div>
+        <div class="pick-right">
+          <div class="pick-odds-sm">+125</div>
+          <div class="pick-book-sm">BetMGM</div>
+          <div class="pick-gap-sm">+4.7pp</div>
+        </div>
+      </div>
+      <div class="pick-prob-row">
+        <span>BOOK 44.4%</span><span>MARKET 45.6%</span><span>MODEL <span class="pick-prob-val">49.2%</span></span>
+      </div>
+      <div class="pick-detail" id="detail-p4">
+        <div class="detail-grid">
+          <div>
+            <div class="detail-head">STATS</div>
+            <div class="stat-row"><span class="stat-key">Best price</span><span class="stat-val gold">+125 BetMGM</span></div>
+            <div class="stat-row"><span class="stat-key">Value gap</span><span class="stat-val gold">+4.7pp</span></div>
+            <div class="stat-row"><span class="stat-key">Book implied</span><span class="stat-val">44.4%</span></div>
+            <div class="stat-row"><span class="stat-key">Model prob</span><span class="stat-val green">49.2%</span></div>
+            <div class="stat-row"><span class="stat-key">SD record</span><span class="stat-val">.476</span></div>
+            <div class="stat-row"><span class="stat-key">MIL record</span><span class="stat-val">.512</span></div>
+            <div class="stat-row"><span class="stat-key">Game time</span><span class="stat-val">1:41 PM ET</span></div>
+          </div>
+          <div>
+            <div class="detail-head">ANALYSIS</div>
+            <div class="detail-analysis">
+              <strong>Michael King has been one of the more underrated starters in the NL</strong> this season. Milwaukee holds a slight record advantage at home, but our model narrows the true gap significantly — San Diego at 49.2% is essentially a coin-flip being priced as a 44% underdog. <strong>BetMGM at +125 offers the best available line</strong> and a clear 4.7pp edge. Moderate conviction — the Brewers' home record is real but the pricing overvalues it. Size accordingly relative to picks 1 and 2.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="expand-row" onclick="togglePick('p4')">
+        <span id="expand-label-p4">▾ EXPAND FULL ANALYSIS</span>
+        <span style="color:#2a4a6a">1:41 PM ET · Thu May 14</span>
+      </div>
+    </div>
+
+    <div class="pick-card" id="card-p5">
+      <div class="pick-header" onclick="togglePick('p5')">
+        <div class="pick-left">
+          <div class="pick-number">PICK #5 · <span class="conf-pill conf-med" style="font-size:8px">MED 61%</span></div>
+          <div class="pick-game-sm">MLB · CHICAGO CUBS vs ATLANTA BRAVES</div>
+          <div class="pick-team-sm">Chicago Cubs</div>
+          <div class="pick-pitcher">SP: <span>Shota Imanaga</span> vs <span>Chris Sale (2.20 ERA)</span></div>
+        </div>
+        <div class="pick-right">
+          <div class="pick-odds-sm">+138</div>
+          <div class="pick-book-sm">FanDuel</div>
+          <div class="pick-gap-sm">+4.0pp</div>
+        </div>
+      </div>
+      <div class="pick-prob-row">
+        <span>BOOK 42.0%</span><span>MARKET 42.5%</span><span>MODEL <span class="pick-prob-val">46.0%</span></span>
+      </div>
+      <div class="pick-detail" id="detail-p5">
+        <div class="detail-grid">
+          <div>
+            <div class="detail-head">STATS</div>
+            <div class="stat-row"><span class="stat-key">Best price</span><span class="stat-val gold">+138 FanDuel</span></div>
+            <div class="stat-row"><span class="stat-key">Value gap</span><span class="stat-val gold">+4.0pp</span></div>
+            <div class="stat-row"><span class="stat-key">Book implied</span><span class="stat-val">42.0%</span></div>
+            <div class="stat-row"><span class="stat-key">Model prob</span><span class="stat-val green">46.0%</span></div>
+            <div class="stat-row"><span class="stat-key">Sale ERA / WHIP</span><span class="stat-val">2.20 / 0.88</span></div>
+            <div class="stat-row"><span class="stat-key">Sale K/9</span><span class="stat-val">10.29</span></div>
+            <div class="stat-row"><span class="stat-key">ATL record</span><span class="stat-val">30-13 (.698)</span></div>
+          </div>
+          <div>
+            <div class="detail-head">ANALYSIS</div>
+            <div class="detail-analysis">
+              This is the <strong>lowest conviction pick of the five — size smallest</strong>. Atlanta is a legitimately elite team at 30-13, and <strong>Chris Sale is having a Cy Young caliber season</strong> — 2.20 ERA, 0.88 WHIP, 10.29 K/9. The case for Chicago rests on <strong>Shota Imanaga being a legitimate ace himself</strong> and the +138 price offering 4pp of model value. In a true pitching duel variance is high and upsets are more likely. <strong>FanDuel at +138 is the only book offering value.</strong> Proceed with caution.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="expand-row" onclick="togglePick('p5')">
+        <span id="expand-label-p5">▾ EXPAND FULL ANALYSIS</span>
+        <span style="color:#2a4a6a">7:16 PM ET · Thu May 14</span>
+      </div>
+    </div>
+
+  </div>
 </div>
 
 <div class="footer">
   <span class="footer-disc">FOR EDUCATIONAL PURPOSES ONLY · NOT FINANCIAL ADVICE · PLEASE GAMBLE RESPONSIBLY</span>
-  <span class="footer-gen" id="footer-gen"></span>
+  <span class="footer-gen">GENERATED 11:20 PM · DATA: THE ODDS API + MLB STATS API · MODEL v3</span>
 </div>
 
 <script>
-const EXPORT_DIR = 'exports/';
-
-async function loadData() {
-  const content = document.getElementById('main-content');
-  content.innerHTML = '<div class="loading">SCANNING FOR LATEST DATA...</div>';
-
-  try {
-    const index = await fetch('exports/index.json');
-    if (!index.ok) throw new Error('NO_INDEX');
-    const files = await index.json();
-    const latest = files[files.length - 1];
-    const resp = await fetch('exports/' + latest);
-    if (!resp.ok) throw new Error('NO_FILE');
-    const data = await resp.json();
-    renderDashboard(data);
-  } catch(e) {
-    if (e.message === 'NO_INDEX') {
-      tryDirectLoad();
-    } else {
-      showError();
-    }
-  }
-}
-
-async function tryDirectLoad() {
-  const filenames = [
-    'exports/ev_all_latest.json',
-    'exports/ev_baseball_mlb_latest.json',
-  ];
-  for (const f of filenames) {
-    try {
-      const resp = await fetch(f);
-      if (resp.ok) {
-        const data = await resp.json();
-        renderDashboard(data);
-        return;
-      }
-    } catch(e) {}
-  }
-  showError();
-}
-
-function showError() {
-  document.getElementById('main-content').innerHTML = `
-    <div class="error-box">
-      <div class="error-title">NO DATA FOUND</div>
-      <div class="error-msg">
-        No export file was found. Run the value engine first to generate picks:<br><br>
-        <div class="error-cmd">python main.py --tomorrow --export</div>
-        <br>
-        Then refresh this dashboard. The exports folder must be in the same directory as this HTML file.
-      </div>
-    </div>`;
-  document.getElementById('metrics-bar').innerHTML = `
-    <div class="metric"><div class="metric-label">STATUS</div><div class="metric-value" style="font-size:14px;color:#ff6b6b;padding-top:4px">NO DATA</div><div class="metric-sub">run main.py first</div></div>`;
-}
-
-function confLabel(score) {
-  if (score >= 80) return 'HIGH';
-  if (score >= 65) return 'MED';
-  return 'LOW';
-}
-
-function confClass(label) {
-  if (label === 'HIGH') return 'conf-high';
-  if (label === 'MED') return 'conf-med';
-  return 'conf-low';
-}
-
-function confidenceScore(bet) {
-  const gapScore = Math.min(bet.value_gap_pp / 15 * 40, 40);
-  const modelScore = bet.model_prob_pct ? Math.min((bet.model_prob_pct - bet.market_avg_prob_pct) / 15 * 30, 30) : 0;
-  const baseScore = 30;
-  return Math.round(Math.max(40, Math.min(95, gapScore + modelScore + baseScore)));
-}
-
-function selectTop5(bets) {
-  const scored = bets.map(b => ({ ...b, confScore: confidenceScore(b) }));
-  const seen = new Set();
-  const unique = scored.filter(b => {
-    if (seen.has(b.game + b.team)) return false;
-    seen.add(b.game + b.team);
-    return true;
-  });
-  return unique.sort((a, b) => b.confScore - a.confScore).slice(0, 5);
-}
-
-function generateAnalysis(bet) {
-  const gap = bet.value_gap_pp.toFixed(1);
-  const modelP = bet.model_prob_pct ? bet.model_prob_pct.toFixed(1) : null;
-  const bookP = bet.book_implied_prob_pct.toFixed(1);
-  const avgP = bet.market_avg_prob_pct.toFixed(1);
-
-  // Support both old model_explanation and new separate fields
-  const pitcherMatchup = bet.pitcher_matchup || '';
-  const statsSource = bet.stats_source || '';
-  const notes = bet.model_explanation || '';
-  const pitcherFromNotes = notes.match(/SP: (.+) vs (.+) \|/);
-  const opsFromNotes = notes.match(/Lineup OPS: (.+)/);
-
-  let analysis = '';
-
-  if (modelP) {
-    const diff = (parseFloat(modelP) - parseFloat(avgP)).toFixed(1);
-    analysis += `Our model assigns <strong>${bet.team} a ${modelP}% true win probability</strong> — ${diff} percentage points above what the market is currently pricing. `;
-  }
-
-  analysis += `The best available price is <strong>${bet.odds} at ${bet.bookmaker}</strong>, representing a ${gap}pp gap versus the market average of ${avgP}%. `;
-
-  if (pitcherMatchup) {
-    const parts = pitcherMatchup.split(' vs ');
-    if (parts.length === 2) {
-      analysis += `Tonight's pitching matchup is <strong>${parts[0].trim()} against ${parts[1].trim()}</strong>. `;
-    }
-  } else if (pitcherFromNotes) {
-    analysis += `The pitching matchup features <strong>${pitcherFromNotes[1].trim()} against ${pitcherFromNotes[2].trim()}</strong>. `;
-  }
-
-  if (opsFromNotes) {
-    analysis += `Lineup quality metrics show <strong>${opsFromNotes[1]}</strong>, factoring the full active roster weighted by plate appearances. `;
-  }
-
-  if (statsSource) {
-    analysis += `Model basis: <strong>${statsSource}</strong>. `;
-  }
-
-  if (parseFloat(gap) >= 8) {
-    analysis += `This is one of the largest discrepancies identified today — a gap of this size typically indicates a book that is slow to adjust or systematically mispricing this matchup. <strong>Strong conviction play.</strong>`;
-  } else if (parseFloat(gap) >= 5) {
-    analysis += `A gap of this magnitude across multiple licensed books suggests a meaningful pricing inefficiency worth acting on. <strong>Solid edge with moderate conviction.</strong>`;
-  } else {
-    analysis += `A modest but consistent edge across the licensed book network. <strong>Lower conviction — size accordingly.</strong>`;
-  }
-
-  return analysis;
-}
-
-function renderMetrics(data, picks) {
-  const meta = data.metadata || {};
-  const date = meta.date || new Date().toISOString().split('T')[0];
-  const generated = meta.generated_at ? new Date(meta.generated_at).toLocaleTimeString('en-US', {hour:'2-digit',minute:'2-digit'}) : 'N/A';
-  const total = meta.total_bets_found || data.value_bets.length;
-  const topGap = picks.length ? picks[0].value_gap_pp.toFixed(1) : 'N/A';
-  const topGame = picks.length ? picks[0].game.split(' vs ').map(t => t.split(' ').pop()).join('/') : '';
-
-  const d = new Date(date + 'T12:00:00');
-  document.getElementById('header-date').textContent = d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'}).toUpperCase();
-  document.getElementById('footer-gen').textContent = 'GENERATED ' + generated;
-
-  document.getElementById('metrics-bar').innerHTML = `
-    <div class="metric"><div class="metric-label">PICKS TODAY</div><div class="metric-value">5</div><div class="metric-sub">of ${total} flagged</div></div>
-    <div class="metric"><div class="metric-label">TOP GAP</div><div class="metric-value">+${topGap}pp</div><div class="metric-sub">${topGame}</div></div>
-    <div class="metric"><div class="metric-label">BOOKS SCANNED</div><div class="metric-value">11</div><div class="metric-sub">licensed US only</div></div>
-    <div class="metric"><div class="metric-label">SPORT</div><div class="metric-value" style="font-size:16px;padding-top:4px">${(meta.sport||'ALL').replace('_',' ').replace('baseball','MLB').replace('basketball','NBA').replace('icehockey','NHL').toUpperCase()}</div><div class="metric-sub">${meta.day_filter || 'today'}</div></div>
-    <div class="metric"><div class="metric-label">MODEL</div><div class="metric-value" style="font-size:16px;padding-top:4px">v3</div><div class="metric-sub">pitcher + lineup</div></div>`;
-}
-
-function renderFeatured(pick) {
-  const conf = pick.confScore;
-  const label = confLabel(conf);
-  const cls = confClass(label);
-  const analysis = generateAnalysis(pick);
-  const notes = pick.model_explanation || '';
-  const pitcherMatch = notes.match(/SP: (.+) vs (.+) \|/);
-  const opsMatch = notes.match(/Lineup OPS: (.+)/);
-  const gameParts = pick.game.split(' vs ');
-
-  return `
-  <div class="featured-card">
-    <div class="featured-label">
-      <span>PICK OF THE DAY</span>
-      <span class="conf-pill ${cls}">${conf}% CONFIDENCE</span>
-    </div>
-    <div class="featured-body">
-      <div class="feat-game">${pick.sport.replace('baseball_mlb','MLB').replace('basketball_nba','NBA').replace('icehockey_nhl','NHL').replace('soccer_usa_mls','MLS').replace('americanfootball_nfl','NFL').toUpperCase()} · ${pick.game.toUpperCase()} · ${pick.time}</div>
-      <div class="feat-team">${pick.team}</div>
-      <div class="feat-bet-type">moneyline · to win</div>
-      <div class="feat-odds-row">
-        <div class="feat-odds">${pick.odds}</div>
-        <div class="feat-odds-detail">
-          <div class="feat-book">BEST PRICE: ${pick.bookmaker.toUpperCase()}</div>
-          <div class="feat-gap">+${pick.value_gap_pp.toFixed(1)}pp model edge</div>
-          <div class="feat-conf"><span class="conf-pill ${cls}">${label} CONFIDENCE</span></div>
-        </div>
-      </div>
-      <div class="feat-grid">
-        <div>
-          <div class="stat-section">
-            <div class="stat-head">PROBABILITY BREAKDOWN</div>
-            <div class="stat-row"><span class="stat-key">Book implied prob</span><span class="stat-val">${pick.book_implied_prob_pct.toFixed(1)}%</span></div>
-            <div class="stat-row"><span class="stat-key">Market average</span><span class="stat-val">${pick.market_avg_prob_pct.toFixed(1)}%</span></div>
-            <div class="stat-row"><span class="stat-key">Model probability</span><span class="stat-val green">${pick.model_prob_pct ? pick.model_prob_pct.toFixed(1)+'%' : 'N/A'}</span></div>
-            <div class="stat-row"><span class="stat-key">Value gap</span><span class="stat-val gold">+${pick.value_gap_pp.toFixed(1)}pp</span></div>
-          </div>
-          ${pitcherMatch ? `
-          <div class="stat-section">
-            <div class="stat-head">PITCHING MATCHUP</div>
-            <div class="stat-row"><span class="stat-key">Away starter</span><span class="stat-val">${pitcherMatch[1].trim()}</span></div>
-            <div class="stat-row"><span class="stat-key">Home starter</span><span class="stat-val">${pitcherMatch[2].trim()}</span></div>
-          </div>` : ''}
-          ${opsMatch ? `
-          <div class="stat-section">
-            <div class="stat-head">LINEUP STRENGTH</div>
-            <div class="stat-row"><span class="stat-key">OPS comparison</span><span class="stat-val green">${opsMatch[1]}</span></div>
-          </div>` : ''}
-        </div>
-        <div>
-          <div class="analysis-head">EDGE ANALYSIS</div>
-          <div class="analysis-text">${analysis}</div>
-        </div>
-      </div>
-    </div>
-  </div>`;
-}
-
-function renderSidebar(picks) {
-  if (picks.length < 2) return '<div class="loading" style="padding:40px;font-size:11px">NOT ENOUGH PICKS</div>';
-
-  return `
-  <div class="sidebar-label">PICKS #2 — #5</div>
-  ${picks.slice(1).map((pick, i) => {
-    const conf = pick.confScore;
-    const label = confLabel(conf);
-    const cls = confClass(label);
-    const notes = pick.model_explanation || '';
-    const pitcherMatchup = pick.pitcher_matchup || '';
-    const pitcherMatch = pitcherMatchup ? pitcherMatchup.split(' vs ') : (notes.match(/SP: (.+) vs (.+) \|/) ? [null, notes.match(/SP: (.+) vs (.+) \|/)[1], notes.match(/SP: (.+) vs (.+) \|/)[2]] : null);
-    const analysis = generateAnalysis(pick);
-    const id = 'pick-' + (i+1);
-
-    return `
-    <div class="pick-card" id="card-${id}">
-      <div class="pick-header" onclick="togglePick('${id}')">
-        <div class="pick-left">
-          <div class="pick-number">PICK #${i+2} · <span class="conf-pill ${cls}" style="font-size:8px">${label} ${conf}%</span></div>
-          <div class="pick-game-sm">${pick.sport.replace('baseball_mlb','MLB').replace('basketball_nba','NBA').replace('icehockey_nhl','NHL').replace('soccer_usa_mls','MLS').toUpperCase()} · ${pick.game.toUpperCase()}</div>
-          <div class="pick-team-sm">${pick.team}</div>
-          ${pitcherMatch && pitcherMatch.length >= 2 ? `<div class="pick-pitcher">SP: <span>${(pitcherMatch[1]||'').trim()}</span> vs <span>${(pitcherMatch[2]||'').trim()}</span></div>` : pitcherMatchup ? `<div class="pick-pitcher">SP: <span>${pitcherMatchup}</span></div>` : ''}
-        </div>
-        <div class="pick-right">
-          <div class="pick-odds-sm">${pick.odds}</div>
-          <div class="pick-book-sm">${pick.bookmaker}</div>
-          <div class="pick-gap-sm">+${pick.value_gap_pp.toFixed(1)}pp</div>
-        </div>
-      </div>
-      <div class="pick-prob-row">
-        <span>BOOK ${pick.book_implied_prob_pct.toFixed(1)}%</span>
-        <span>MARKET ${pick.market_avg_prob_pct.toFixed(1)}%</span>
-        <span>MODEL <span class="pick-prob-val">${pick.model_prob_pct ? pick.model_prob_pct.toFixed(1)+'%' : 'N/A'}</span></span>
-      </div>
-      <div class="pick-detail" id="detail-${id}">
-        <div class="detail-grid">
-          <div>
-            <div class="detail-head">STATS</div>
-            <div class="stat-row"><span class="stat-key">Best odds</span><span class="stat-val gold">${pick.odds} · ${pick.bookmaker}</span></div>
-            <div class="stat-row"><span class="stat-key">Value gap</span><span class="stat-val gold">+${pick.value_gap_pp.toFixed(1)}pp</span></div>
-            <div class="stat-row"><span class="stat-key">Book implied</span><span class="stat-val">${pick.book_implied_prob_pct.toFixed(1)}%</span></div>
-            <div class="stat-row"><span class="stat-key">Model prob</span><span class="stat-val green">${pick.model_prob_pct ? pick.model_prob_pct.toFixed(1)+'%' : 'N/A'}</span></div>
-            <div class="stat-row"><span class="stat-key">Game time</span><span class="stat-val">${pick.time}</span></div>
-          </div>
-          <div>
-            <div class="detail-head">ANALYSIS</div>
-            <div class="detail-analysis">${analysis}</div>
-          </div>
-        </div>
-      </div>
-      <div class="expand-row" onclick="togglePick('${id}')">
-        <span id="expand-label-${id}">▾ EXPAND FULL ANALYSIS</span>
-        <span style="color:#2a4a6a">${pick.time}</span>
-      </div>
-    </div>`;
-  }).join('')}`;
-}
-
-function renderDashboard(data) {
-  const bets = data.value_bets || [];
-  if (!bets.length) { showError(); return; }
-
-  const picks = selectTop5(bets);
-  renderMetrics(data, picks);
-
-  const featured = picks[0];
-  document.getElementById('main-content').innerHTML = `
-    <div class="main">
-      <div>
-        ${renderFeatured(featured)}
-      </div>
-      <div class="sidebar">
-        ${renderSidebar(picks)}
-      </div>
-    </div>`;
-}
-
 function togglePick(id) {
   const detail = document.getElementById('detail-' + id);
   const label = document.getElementById('expand-label-' + id);
   const card = document.getElementById('card-' + id);
   const isOpen = detail.classList.contains('open');
-
   document.querySelectorAll('.pick-detail').forEach(d => d.classList.remove('open'));
   document.querySelectorAll('[id^="expand-label-"]').forEach(l => l.textContent = '▾ EXPAND FULL ANALYSIS');
   document.querySelectorAll('.pick-card').forEach(c => c.classList.remove('active'));
-
   if (!isOpen) {
     detail.classList.add('open');
     label.textContent = '▴ COLLAPSE';
     card.classList.add('active');
   }
 }
-
-loadData();
 </script>
 </body>
 </html>
