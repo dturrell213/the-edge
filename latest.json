@@ -1,0 +1,95 @@
+
+======================================================================
+  SPORTS BETTING VALUE ENGINE v6
+  Sport: BASEBALL_MLB | Filter: today | Threshold: >15.0%
+======================================================================
+
+  Fetching MLB standings...
+  Found 30 teams
+  Fetching FanGraphs batter data...
+  Loaded 171 FanGraphs batter records
+  Fetching FanGraphs pitcher data...
+  Loaded 79 FanGraphs pitcher records
+  Fetching probable pitchers...
+  Found pitchers for 30 teams
+  Fetching odds...
+
+  Odds API quota: used 135 | remaining 365
+
+  Found 15 game(s)
+
+  Fetching team staff stats and full roster with splits...
+    Pittsburgh Pirates: 11 hitters | OPS 0.739 | wRC+ 115
+    Philadelphia Phillies: 12 hitters | OPS 0.702 | wRC+ 104
+    Washington Nationals: 13 hitters | OPS 0.733 | wRC+ 105
+    Baltimore Orioles: 12 hitters | OPS 0.694 | wRC+ 103
+    Detroit Tigers: 11 hitters | OPS 0.713 | wRC+ 117
+    Toronto Blue Jays: 13 hitters | OPS 0.693 | wRC+ 103
+    Cleveland Guardians: 12 hitters | OPS 0.701 | wRC+ 104
+    Cincinnati Reds: 12 hitters | OPS 0.719 | wRC+ 103
+    Tampa Bay Rays: 13 hitters | OPS 0.711 | wRC+ 102
+    Miami Marlins: 12 hitters | OPS 0.702 | wRC+ 113
+    Minnesota Twins: 12 hitters | OPS 0.719 | wRC+ 99
+    Milwaukee Brewers: 13 hitters | OPS 0.704 | wRC+ 107
+    Atlanta Braves: 9 hitters | OPS 0.805 | wRC+ 124
+    Boston Red Sox: 12 hitters | OPS 0.664 | wRC+ 91
+    New York Mets: 10 hitters | OPS 0.638 | wRC+ 86
+    New York Yankees: 10 hitters | OPS 0.790 | wRC+ 124
+    Chicago White Sox: 13 hitters | OPS 0.735 | wRC+ 112
+    Chicago Cubs: 12 hitters | OPS 0.749 | wRC+ 106
+    Houston Astros: 10 hitters | OPS 0.778 | wRC+ 118
+    Texas Rangers: 12 hitters | OPS 0.695 | wRC+ 102
+    St. Louis Cardinals: 12 hitters | OPS 0.719 | wRC+ 116
+    Kansas City Royals: 12 hitters | OPS 0.711 | wRC+ 98
+    Colorado Rockies: 13 hitters | OPS 0.713 | wRC+ 103
+    Arizona Diamondbacks: 12 hitters | OPS 0.700 | wRC+ 111
+    Los Angeles Angels: 12 hitters | OPS 0.721 | wRC+ 108
+    Los Angeles Dodgers: 13 hitters | OPS 0.784 | wRC+ 119
+    Athletics: 11 hitters | OPS 0.776 | wRC+ 111
+    San Francisco Giants: 10 hitters | OPS 0.672 | wRC+ 96
+    Seattle Mariners: 12 hitters | OPS 0.725 | wRC+ 110
+    San Diego Padres: 11 hitters | OPS 0.664 | wRC+ 94
+
+  Fetching weather...
+    PNC Park: 70.2F, 5.5 mph, rain 1%
+    Nationals Park: 72.5F, 8.5 mph, rain 0%
+    Comerica Park: 71.1F, 12.2 mph, rain 1%
+    Progressive Field: 64.4F, 1.9 mph, rain 1%
+    Tropicana Field: 84.0F, 10.9 mph, rain 0%
+    Target Field: 87.1F, 11.1 mph, rain 3%
+    Truist Park: 78.6F, 6.0 mph, rain 0%
+    Citi Field: 65.8F, 6.3 mph, rain 0%
+    Rate Field: 72.9F, 13.5 mph, rain 0%
+    Daikin Park: 79.3F, 8.5 mph, rain 0%
+    Busch Stadium: 71.2F, 9.5 mph, rain 0%
+    Coors Field: 84.6F, 5.5 mph, rain 3%
+    Angel Stadium: 70.7F, 8.5 mph, rain 0%
+    Sutter Health Park: 87.6F, 7.0 mph, rain 0%
+    T-Mobile Park: 56.8F, 12.4 mph, rain 27%
+
+  Running value model...
+
+====================================================================================================
+  4 VALUE BET(S) FOUND — ranked by model edge
+====================================================================================================
+
+╭───────────────────────────────────────────┬────────────────────────────────────────────┬──────────────────────┬───────────────┬─────────────┬─────────────┬───────────┬──────────────┬─────────┬─────────────────────────────────╮
+│ Game                                      │ Time                                       │ Team                 │ Best Book     │   Best Odds │ Book Prob   │ Mkt Avg   │ Model Prob   │ Edge    │ Pitchers                        │
+├───────────────────────────────────────────┼────────────────────────────────────────────┼──────────────────────┼───────────────┼─────────────┼─────────────┼───────────┼──────────────┼─────────┼─────────────────────────────────┤
+│ Kansas City Royals vs St. Louis Cardinals │ Fri May 15  08:16 PM Eastern Daylight Time │ St. Louis Cardinals  │ FanDuel       │        -110 │ 52.4%       │ 52.7%     │ 70.9%        │ +18.6pp │ Michael Wacha vs Dustin May     │
+│ Toronto Blue Jays vs Detroit Tigers       │ Fri May 15  06:46 PM Eastern Daylight Time │ Detroit Tigers       │ Hard Rock Bet │        +110 │ 47.6%       │ 48.2%     │ 64.5%        │ +16.9pp │ Trey Yesavage vs Brenan Hanifee │
+│ Miami Marlins vs Tampa Bay Rays           │ Fri May 15  07:11 PM Eastern Daylight Time │ Tampa Bay Rays       │ FanDuel       │        -116 │ 53.7%       │ 54.7%     │ 70.2%        │ +16.5pp │ Janson Junk vs Jesse Scholtens  │
+│ Baltimore Orioles vs Washington Nationals │ Fri May 15  06:46 PM Eastern Daylight Time │ Washington Nationals │ Hard Rock Bet │        +120 │ 45.5%       │ 46.1%     │ 60.6%        │ +15.1pp │ Shane Baz vs Zack Littell       │
+╰───────────────────────────────────────────┴────────────────────────────────────────────┴──────────────────────┴───────────────┴─────────────┴─────────────┴───────────┴──────────────┴─────────┴─────────────────────────────────╯
+
+  Model data layers (v6):
+    MLB standings  — home/away pct, last 10, streak, run differential
+    FanGraphs      — wRC+, FIP, xFIP, SIERA, xERA, K-BB%, SwStr%, EV, Barrel%
+    Roster splits  — home/away and vs L/R per hitter
+    Park factors   — all 30 MLB stadiums
+    Weather        — temperature, wind, precipitation
+
+
+  Exported 4 record(s):
+    JSON → exports\ev_baseball_mlb_20260515_105922.json
+    CSV  → exports\ev_baseball_mlb_20260515_105922.csv
