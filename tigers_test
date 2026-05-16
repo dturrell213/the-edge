@@ -1,0 +1,1 @@
+python -c "import requests,json; r=requests.get('https://statsapi.mlb.com/api/v1/teams/116/stats?stats=season&group=hitting&season=2026&playerPool=All'); print(json.dumps(r.json(),indent=2))" > player_stats_test.json

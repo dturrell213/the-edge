@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Daily Degenerate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Oswald:wght@300;400;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #15100a;
+  --cream: #f2e8d0;
+  --cream2: #ede0c4;
+  --gold: #c8a84b;
+  --gold2: #a08030;
+  --gold-light: #e8c870;
+  --red: #8b1a1a;
+  --green-win: #1a5c1a;
+  --text-main: #1a1208;
+  --text-sub: #5a4a2a;
+  --text-faint: #9a8060;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--cream);
+  color: var(--text-main);
+  font-family: 'Old Standard TT', serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ─── MASTHEAD ─── */
+.masthead {
+  background: var(--ink);
+  background-image:
+    radial-gradient(ellipse at 30% 50%, rgba(200,168,75,0.07), transparent 60%),
+    repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,0.006) 3px, rgba(255,255,255,0.006) 6px);
+  border-bottom: 3px solid var(--gold);
+  padding: 28px 20px 24px;
+  text-align: center;
+}
+
+.masthead-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  font-family: 'Old Standard TT', serif;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  opacity: 0.7;
+  text-transform: uppercase;
+}
+
+.mast-rule-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.mast-rule { flex: 1; display: flex; flex-direction: column; gap: 3px; }
+.mast-rule div { height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0.45; }
+.mast-orn { color: var(--gold); font-size: 11px; letter-spacing: 5px; opacity: 0.65; flex-shrink: 0; }
+
+.mast-est { font-family: 'Old Standard TT', serif; font-size: 10px; font-weight: 700; font-style: italic; letter-spacing: 5px; color: var(--gold); opacity: 0.85; text-transform: uppercase; margin-bottom: 5px; }
+.mast-the { font-family: 'Playfair Display', serif; font-weight: 700; font-style: italic; font-size: 12px; letter-spacing: 10px; color: var(--gold); text-transform: uppercase; }
+.mast-daily { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 15px; letter-spacing: 13px; color: #9a8238; text-transform: uppercase; margin-bottom: 2px; }
+.mast-title { font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(48px, 13vw, 82px); color: var(--cream); line-height: 0.9; letter-spacing: 2px; text-shadow: 0 2px 20px rgba(0,0,0,0.5); }
+.mast-tagline { font-family: 'Old Standard TT', serif; font-size: 10px; font-weight: 700; letter-spacing: 3px; color: var(--gold); opacity: 0.85; text-transform: uppercase; margin-top: 10px; }
+.mast-tagline em { font-style: italic; font-weight: 400; opacity: 0.8; }
+
+/* ─── DATE BAR ─── */
+.date-bar {
+  background: var(--ink);
+  border-top: 1px solid rgba(200,168,75,0.2);
+  border-bottom: 2px solid var(--gold);
+  padding: 6px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: 'Old Standard TT', serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--gold);
+  opacity: 0.85;
+  text-transform: uppercase;
+}
+
+.live-dot {
+  display: inline-block;
+  width: 6px; height: 6px;
+  background: #4caf50;
+  border-radius: 50%;
+  margin-right: 6px;
+  animation: pulse 2s infinite;
+  vertical-align: middle;
+}
+
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+/* ─── SECTION NAV TABS ─── */
+.section-tabs {
+  background: var(--cream2);
+  border-bottom: 2px solid var(--ink);
+  display: flex;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.section-tabs::-webkit-scrollbar { display: none; }
+
+.tab-btn {
+  flex-shrink: 0;
+  padding: 10px 18px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-sub);
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.tab-btn.active {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+  background: rgba(0,0,0,0.04);
+}
+
+/* ─── PAGE SYSTEM ─── */
+.pages-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.pages-track {
+  display: flex;
+  transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+  will-change: transform;
+}
+
+.page {
+  flex-shrink: 0;
+  width: 100%;
+  min-height: 60vh;
+  padding: 24px 16px 100px;
+  background: var(--cream);
+  background-image: repeating-linear-gradient(0deg, transparent, transparent 24px, rgba(0,0,0,0.018) 24px, rgba(0,0,0,0.018) 25px);
+}
+
+/* ─── PAGE NAVIGATION ─── */
+.page-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--ink);
+  border-top: 2px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  z-index: 100;
+}
+
+.nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: 1px solid rgba(200,168,75,0.3);
+  border-radius: 3px;
+  padding: 8px 16px;
+  color: var(--gold);
+  font-family: 'Oswald', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.nav-btn:hover:not(:disabled) {
+  background: rgba(200,168,75,0.1);
+  border-color: var(--gold);
+}
+
+.nav-btn:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
+.nav-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-page-label {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--cream);
+  letter-spacing: 1px;
+}
+
+.nav-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.nav-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(200,168,75,0.3);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.nav-dot.active { background: var(--gold); }
+
+/* ─── SECTION HEADERS ─── */
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.section-rule { flex: 1; height: 2px; background: var(--ink); }
+.section-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--ink);
+  white-space: nowrap;
+  padding: 0 4px;
+}
+
+/* ─── PICK PAGE LAYOUT ─── */
+.pick-page-header {
+  background: var(--ink);
+  border-radius: 2px 2px 0 0;
+  padding: 16px 18px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 0;
+}
+
+.pick-page-meta {
+  font-family: 'Oswald', sans-serif;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  opacity: 0.7;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.pick-page-headline {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: clamp(22px, 6vw, 34px);
+  color: var(--cream);
+  line-height: 1.05;
+}
+
+.pick-page-odds-wrap { text-align: right; flex-shrink: 0; }
+.pick-page-odds {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  color: var(--gold-light);
+  letter-spacing: 1px;
+}
+.pick-page-book {
+  font-size: 9px;
+  color: var(--gold);
+  opacity: 0.65;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* EDGE BAR */
+.edge-strip {
+  background: rgba(0,0,0,0.06);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-top: none;
+  padding: 10px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 0;
+}
+
+.edge-label-sm {
+  font-family: 'Oswald', sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-sub);
+  width: 56px;
+  flex-shrink: 0;
+}
+
+.edge-track { flex: 1; height: 5px; background: rgba(0,0,0,0.08); border-radius: 3px; overflow: hidden; }
+.edge-fill { height: 100%; border-radius: 3px; }
+.edge-fill.book { background: linear-gradient(90deg, var(--gold2), var(--gold)); }
+.edge-fill.model { background: linear-gradient(90deg, #2a5a2a, #4caf50); }
+.edge-val { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; color: var(--text-main); width: 34px; text-align: right; flex-shrink: 0; }
+
+.edge-badge {
+  background: rgba(26,92,26,0.1);
+  border: 1px solid rgba(26,92,26,0.2);
+  border-top: none;
+  padding: 6px 18px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--green-win);
+  margin-bottom: 16px;
+}
+
+/* ARTICLE WRITEUP */
+.article-body {
+  border: 1px solid rgba(0,0,0,0.1);
+  border-top: none;
+  padding: 16px 18px;
+  background: rgba(255,255,255,0.45);
+  margin-bottom: 16px;
+}
+
+.article-byline {
+  font-family: 'Old Standard TT', serif;
+  font-size: 9px;
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+}
+
+.article-text {
+  font-family: 'Old Standard TT', serif;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--text-main);
+  columns: 1;
+}
+
+.article-text.has-writeup {
+  font-size: 15px;
+}
+
+.article-dropcap::first-letter {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 3.5em;
+  float: left;
+  line-height: 0.8;
+  margin-right: 6px;
+  margin-top: 4px;
+  color: var(--ink);
+}
+
+/* DATA GRID */
+.data-section-label {
+  font-family: 'Oswald', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  padding-bottom: 6px;
+  margin-bottom: 10px;
+}
+
+.data-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.data-item {
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 2px;
+  padding: 9px 11px;
+  background: rgba(255,255,255,0.5);
+}
+
+.data-label {
+  font-family: 'Oswald', sans-serif;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 3px;
+}
+
+.data-val {
+  font-family: 'Old Standard TT', serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+.data-val.gold { color: var(--gold2); }
+.data-val.green { color: var(--green-win); }
+.data-val.red { color: var(--red); }
+
+/* PITCHER BOX */
+.pitcher-box {
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+
+.pitcher-box-header {
+  background: var(--cream2);
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  padding: 6px 12px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-sub);
+}
+
+.pitcher-box-body {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 12px;
+  gap: 12px;
+}
+
+.pitcher-col { }
+.pitcher-col.right { text-align: right; }
+.pitcher-name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 14px; color: var(--text-main); }
+.pitcher-stat { font-size: 10px; color: var(--text-sub); font-style: italic; margin-top: 2px; }
+.pitcher-vs-badge {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 10px;
+  color: var(--text-faint);
+  letter-spacing: 2px;
+  background: rgba(0,0,0,0.06);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* WEATHER */
+.weather-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+  padding: 10px 12px;
+  background: rgba(0,0,0,0.04);
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: 2px;
+}
+.weather-chip { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--text-sub); font-style: italic; }
+.weather-chip strong { color: var(--text-main); font-style: normal; font-weight: 700; }
+
+/* ─── PARLAY PAGE ─── */
+.parlay-wrap {
+  border: 2px solid var(--ink);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.parlay-banner {
+  background: var(--ink);
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.parlay-label {
+  font-family: 'Oswald', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.parlay-payout {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 30px;
+  color: var(--gold-light);
+}
+
+.parlay-body { padding: 16px 18px; }
+
+.parlay-leg {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+.parlay-leg:last-child { border-bottom: none; }
+
+.leg-num {
+  width: 28px; height: 28px;
+  background: var(--ink);
+  color: var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  flex-shrink: 0;
+}
+
+.leg-info { flex: 1; }
+.leg-team { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 16px; color: var(--text-main); }
+.leg-game { font-size: 10px; color: var(--text-sub); margin-top: 2px; font-style: italic; }
+.leg-odds { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 20px; color: var(--green-win); flex-shrink: 0; }
+
+.parlay-note {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-left: 3px solid var(--gold);
+  background: rgba(200,168,75,0.06);
+  font-size: 11px;
+  color: var(--text-sub);
+  font-style: italic;
+  line-height: 1.7;
+}
+
+/* ─── LONGSHOT PAGE ─── */
+.longshot-wrap {
+  border: 2px solid var(--gold2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.longshot-banner {
+  background: linear-gradient(135deg, #1a1208, #2a1e08);
+  border-bottom: 1px solid var(--gold);
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.longshot-icon { font-size: 20px; }
+.longshot-label { flex: 1; font-family: 'Oswald', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); }
+.longshot-odds { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 30px; color: var(--gold-light); }
+
+.longshot-callout {
+  border-left: 3px solid var(--gold);
+  padding: 12px 14px;
+  margin-bottom: 16px;
+  background: rgba(200,168,75,0.06);
+  font-size: 11px;
+  color: var(--text-sub);
+  font-style: italic;
+  line-height: 1.7;
+}
+.longshot-callout strong { color: var(--gold2); font-style: normal; }
+
+/* ─── RESULTS PAGE ─── */
+.results-wrap {
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.results-banner {
+  background: var(--cream2);
+  border-bottom: 2px solid var(--ink);
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.results-label {
+  font-family: 'Oswald', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.results-record {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 22px;
+  color: var(--text-main);
+}
+
+.results-body { padding: 4px 18px 8px; }
+
+.result-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.result-row:last-child { border-bottom: none; }
+
+.result-indicator {
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Oswald', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.win { background: var(--green-win); color: white; }
+.loss { background: var(--red); color: white; }
+.pending { background: rgba(0,0,0,0.12); color: var(--text-faint); }
+
+.result-info { flex: 1; }
+.result-team { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 15px; color: var(--text-main); }
+.result-game { font-size: 10px; color: var(--text-sub); margin-top: 1px; font-style: italic; }
+.result-odds { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 15px; color: var(--text-sub); flex-shrink: 0; }
+
+.no-data {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-faint);
+  font-style: italic;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--ink);
+  border-top: 2px solid var(--gold);
+  padding: 24px 20px;
+  text-align: center;
+}
+.footer-logo { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 20px; color: var(--cream); letter-spacing: 2px; margin-bottom: 6px; }
+.footer-sub { font-family: 'Old Standard TT', serif; font-size: 9px; letter-spacing: 3px; color: var(--gold); opacity: 0.6; text-transform: uppercase; margin-bottom: 10px; }
+.footer-disc { font-size: 9px; color: rgba(200,168,75,0.35); line-height: 1.7; max-width: 500px; margin: 0 auto; font-style: italic; }
+
+@media (max-width: 480px) {
+  .data-grid { grid-template-columns: repeat(2, 1fr); }
+  .masthead-top { display: none; }
+  .pitcher-box-body { grid-template-columns: 1fr; gap: 8px; }
+  .pitcher-vs-badge { display: none; }
+  .pitcher-col.right { text-align: left; }
+}
+</style>
+</head>
+<body>
+
+<!-- MASTHEAD -->
+<header>
+  <div class="masthead">
+    <div class="masthead-top">
+      <span>Vol. 1 · No. 1</span>
+      <span id="headerDate"></span>
+      <span>Sharp Picks Daily</span>
+    </div>
+    <div class="mast-est">Est. 2025 &nbsp;·&nbsp; Sharp Picks Daily</div>
+    <div class="mast-rule-row">
+      <div class="mast-rule"><div></div><div></div></div>
+      <div class="mast-orn">✦ ✦ ✦</div>
+      <div class="mast-rule"><div></div><div></div></div>
+    </div>
+    <div class="mast-the">The</div>
+    <div class="mast-daily">Daily</div>
+    <div class="mast-title">Degenerate</div>
+    <div class="mast-rule-row" style="margin-top:12px">
+      <div class="mast-rule"><div></div><div></div></div>
+      <div class="mast-orn">✦ ✦ ✦</div>
+      <div class="mast-rule"><div></div><div></div></div>
+    </div>
+    <div class="mast-tagline">Stop The Presses &nbsp;·&nbsp; <em>We Found Value</em></div>
+  </div>
+  <div class="date-bar">
+    <span><span class="live-dot"></span>Live</span>
+    <span id="dateDisplay">Loading...</span>
+    <span>MLB · NFL · NBA</span>
+  </div>
+</header>
+
+<!-- SECTION TABS -->
+<div class="section-tabs" id="sectionTabs"></div>
+
+<!-- PAGES -->
+<div class="pages-wrapper">
+  <div class="pages-track" id="pagesTrack"></div>
+</div>
+
+<!-- PAGE NAV -->
+<div class="page-nav">
+  <button class="nav-btn" id="prevBtn" onclick="navigate(-1)" disabled>◀ Back</button>
+  <div class="nav-center">
+    <div class="nav-page-label" id="navLabel">—</div>
+    <div class="nav-dots" id="navDots"></div>
+  </div>
+  <button class="nav-btn" id="nextBtn" onclick="navigate(1)">Next ▶</button>
+</div>
+
+<footer>
+  <div class="footer-logo">The Daily Degenerate</div>
+  <div class="footer-sub">Stop The Presses · We Found Value</div>
+  <div class="footer-disc">
+    For entertainment and informational purposes only. Must be 21+ and in an eligible state to place wagers.
+    Please gamble responsibly. Data updated daily at 8:00 AM and 2 hours before first pitch.
+    If you or someone you know has a gambling problem, call 1-800-GAMBLER.
+  </div>
+</footer>
+
+<script>
+const DATA_URL    = './exports/latest.json';
+const RESULTS_URL = './exports/results.json';
+
+let currentPage = 0;
+let totalPages  = 0;
+let pageLabels  = [];
+
+// ─── INIT ─────────────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  setDates();
+  loadData();
+  setupSwipe();
+});
+
+function setDates() {
+  const now  = new Date();
+  const opts = { weekday:'long', year:'numeric', month:'long', day:'numeric' };
+  document.getElementById('dateDisplay').textContent = now.toLocaleDateString('en-US', opts);
+  document.getElementById('headerDate').textContent  = now.toLocaleDateString('en-US', { month:'long', day:'numeric', year:'numeric' });
+}
+
+// ─── DATA ─────────────────────────────────────────────────────────────────────
+async function loadData() {
+  let bets = [], meta = {};
+  try {
+    const r = await fetch(DATA_URL + '?t=' + Date.now());
+    if (r.ok) { const d = await r.json(); bets = d.value_bets||[]; meta = d.metadata||{}; }
+  } catch(e) {}
+  if (!bets.length) bets = getSampleData();
+
+  const filtered = bets
+    .filter(b => b.edge_pp >= 3 && Math.abs(b.best_odds_american||0) <= 350)
+    .sort((a,b) => b.edge_pp - a.edge_pp)
+    .slice(0, 5);
+
+  let results = [];
+  try {
+    const r = await fetch(RESULTS_URL + '?t=' + Date.now());
+    if (r.ok) { const d = await r.json(); results = d.results||[]; }
+  } catch(e) {}
+
+  buildPages(filtered, results);
+}
+
+// ─── BUILD PAGES ──────────────────────────────────────────────────────────────
+function buildPages(bets, results) {
+  const track = document.getElementById('pagesTrack');
+  const tabs  = document.getElementById('sectionTabs');
+  track.innerHTML = '';
+  tabs.innerHTML  = '';
+  pageLabels      = [];
+
+  const pages = [];
+
+  // Best Bets pages (one per pick)
+  bets.forEach((b, i) => {
+    pages.push({ label: `Pick ${i+1}`, content: buildPickPage(b, i+1, bets.length) });
+  });
+
+  // Parlay page
+  pages.push({ label: 'Parlay', content: buildParlayPage(bets) });
+
+  // Longshot page
+  pages.push({ label: 'Longshot', content: buildLongshotPage(bets) });
+
+  // Results page
+  pages.push({ label: 'Results', content: buildResultsPage(results) });
+
+  totalPages = pages.length;
+
+  pages.forEach((p, i) => {
+    // Page
+    const page = document.createElement('div');
+    page.className = 'page';
+    page.innerHTML = p.content;
+    track.appendChild(page);
+    pageLabels.push(p.label);
+
+    // Tab
+    const tab = document.createElement('button');
+    tab.className = 'tab-btn' + (i === 0 ? ' active' : '');
+    tab.textContent = p.label;
+    tab.onclick = () => goTo(i);
+    tabs.appendChild(tab);
+  });
+
+  buildDots();
+  updateNav();
+}
+
+// ─── PICK PAGE ────────────────────────────────────────────────────────────────
+function buildPickPage(b, rank, total) {
+  const gameParts = (b.game||'').split(' vs ');
+  const away = gameParts[0]||'';
+  const home = gameParts[1]||'';
+  const isPos = parseInt(b.best_odds_american) > 0;
+  const odds = isPos ? '+'+b.best_odds_american : String(b.best_odds_american);
+  const bookPct   = b.best_book_implied_pct||0;
+  const modelPct  = b.model_prob_pct||0;
+  const edge      = b.edge_pp||0;
+  const homeR     = b.home_wins !== undefined ? b.home_wins+'-'+b.home_losses : '—';
+  const awayR     = b.away_wins !== undefined ? b.away_wins+'-'+b.away_losses : '—';
+  const rdClass   = (b.home_run_diff||0) > 0 ? 'green' : 'red';
+  const rdStr     = b.home_run_diff !== undefined ? ((b.home_run_diff>0?'+':'')+b.home_run_diff) : '—';
+  const wrc       = b.home_roster_wrc ? Math.round(b.home_roster_wrc) : '—';
+  const park      = b.park_factor ? parseFloat(b.park_factor).toFixed(2) : '1.00';
+  const homeERA   = b.home_pitcher_era ? parseFloat(b.home_pitcher_era).toFixed(2) : '—';
+  const awayERA   = b.away_pitcher_era ? parseFloat(b.away_pitcher_era).toFixed(2) : '—';
+  const homeFIP   = b.home_pitcher_fip ? parseFloat(b.home_pitcher_fip).toFixed(2) : '—';
+  const awayFIP   = b.away_pitcher_fip ? parseFloat(b.away_pitcher_fip).toFixed(2) : '—';
+  const homeK9    = b.home_pitcher_k9  ? parseFloat(b.home_pitcher_k9).toFixed(1)  : '—';
+  const awayK9    = b.away_pitcher_k9  ? parseFloat(b.away_pitcher_k9).toFixed(1)  : '—';
+  const homeSIERA = b.home_pitcher_siera ? parseFloat(b.home_pitcher_siera).toFixed(2) : '—';
+  const awaySIERA = b.away_pitcher_siera ? parseFloat(b.away_pitcher_siera).toFixed(2) : '—';
+  const writeup   = b.writeup || '';
+
+  const defaultArticle = `${b.team} takes the field tonight as the data finds meaningful value against what the books are offering. 
+With a ${modelPct.toFixed(0)}% true win probability against the books' implied ${bookPct.toFixed(0)}%, 
+the wire has spotted a ${edge.toFixed(1)} percentage point edge that's too good to ignore. 
+The numbers don't lie — and tonight, they're pointing firmly at ${b.team}.`;
+
+  const articleText = writeup || defaultArticle;
+  const hasPitchers = b.home_pitcher && b.home_pitcher !== 'TBD';
+
+  return `
+  <div class="section-header">
+    <div class="section-rule"></div>
+    <div class="section-title">Today's Best Bets &nbsp;·&nbsp; Pick ${rank} of ${total}</div>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="pick-page-header">
+    <div>
+      <div class="pick-page-meta">Pick #${rank} &nbsp;·&nbsp; ${away} @ ${home}</div>
+      <div class="pick-page-headline">${b.team||'—'}</div>
+    </div>
+    <div class="pick-page-odds-wrap">
+      <div class="pick-page-odds">${odds}</div>
+      <div class="pick-page-book">${b.best_bookmaker||''}</div>
+    </div>
+  </div>
+
+  <div class="edge-strip">
+    <div class="edge-label-sm">Book</div>
+    <div class="edge-track"><div class="edge-fill book" style="width:${bookPct}%"></div></div>
+    <div class="edge-val">${bookPct.toFixed(0)}%</div>
+  </div>
+  <div class="edge-strip" style="border-top:none">
+    <div class="edge-label-sm">Model</div>
+    <div class="edge-track"><div class="edge-fill model" style="width:${modelPct}%"></div></div>
+    <div class="edge-val">${modelPct.toFixed(0)}%</div>
+  </div>
+  <div class="edge-badge">▲ ${edge.toFixed(1)}pp Model Edge &nbsp;·&nbsp; ${b.time||''}</div>
+
+  <div class="article-body">
+    <div class="article-byline">By The Wire &nbsp;·&nbsp; The Daily Degenerate &nbsp;·&nbsp; ${new Date().toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'})}</div>
+    <div class="article-text ${writeup ? 'has-writeup article-dropcap' : ''}">${articleText}</div>
+  </div>
+
+  <div class="article-body" style="margin-top:-14px">
+    <div class="data-section-label">By The Numbers</div>
+    <div class="data-grid">
+      <div class="data-item"><div class="data-label">Home Record</div><div class="data-val">${homeR}</div></div>
+      <div class="data-item"><div class="data-label">Away Record</div><div class="data-val">${awayR}</div></div>
+      <div class="data-item"><div class="data-label">Run Diff</div><div class="data-val ${rdClass}">${rdStr}</div></div>
+      <div class="data-item"><div class="data-label">Home L10</div><div class="data-val">${b.home_form_l10||'—'}</div></div>
+      <div class="data-item"><div class="data-label">wRC+</div><div class="data-val gold">${wrc}</div></div>
+      <div class="data-item"><div class="data-label">Park Factor</div><div class="data-val">${park}</div></div>
+      ${b.home_streak ? `<div class="data-item"><div class="data-label">Home Streak</div><div class="data-val">${b.home_streak}</div></div>` : ''}
+      ${b.away_streak ? `<div class="data-item"><div class="data-label">Away Streak</div><div class="data-val">${b.away_streak}</div></div>` : ''}
+      ${b.home_runs_per_game ? `<div class="data-item"><div class="data-label">Runs/Game</div><div class="data-val">${b.home_runs_per_game}</div></div>` : ''}
+    </div>
+
+    ${hasPitchers ? `
+    <div class="pitcher-box">
+      <div class="pitcher-box-header">Probable Pitchers</div>
+      <div class="pitcher-box-body">
+        <div class="pitcher-col">
+          <div class="pitcher-name">${b.away_pitcher||'TBD'}</div>
+          <div class="pitcher-stat">ERA ${awayERA} · FIP ${awayFIP}</div>
+          <div class="pitcher-stat">K/9 ${awayK9} · SIERA ${awaySIERA}</div>
+        </div>
+        <div class="pitcher-vs-badge">VS</div>
+        <div class="pitcher-col right">
+          <div class="pitcher-name">${b.home_pitcher||'TBD'}</div>
+          <div class="pitcher-stat">ERA ${homeERA} · FIP ${homeFIP}</div>
+          <div class="pitcher-stat">K/9 ${homeK9} · SIERA ${homeSIERA}</div>
+        </div>
+      </div>
+    </div>` : ''}
+
+    ${b.weather_temp_f ? `
+    <div class="weather-row">
+      <div class="weather-chip">🌡️ <strong>${b.weather_temp_f}°F</strong></div>
+      <div class="weather-chip">💨 <strong>${b.weather_wind_mph} mph</strong></div>
+      <div class="weather-chip">🌧️ <strong>${b.weather_precip_pct}% rain</strong></div>
+      ${b.venue ? `<div class="weather-chip">📍 <strong>${b.venue}</strong></div>` : ''}
+    </div>` : ''}
+  </div>`;
+}
+
+// ─── PARLAY PAGE ──────────────────────────────────────────────────────────────
+function buildParlayPage(bets) {
+  const legs = bets.slice(0, Math.min(3, bets.length));
+  if (legs.length < 2) return `<div class="section-header"><div class="section-rule"></div><div class="section-title">Our Favorite Parlay</div><div class="section-rule"></div></div><div class="no-data">Need at least 2 picks to build a parlay today.</div>`;
+
+  let decimal = 1;
+  legs.forEach(b => {
+    const a = parseInt(b.best_odds_american);
+    decimal *= a > 0 ? (a/100)+1 : (100/Math.abs(a))+1;
+  });
+  const parlayAm = decimal >= 2 ? '+'+Math.round((decimal-1)*100) : '-'+Math.round(100/(decimal-1));
+  const payout   = Math.round(decimal * 100);
+
+  return `
+  <div class="section-header">
+    <div class="section-rule"></div>
+    <div class="section-title">Our Favorite Parlay</div>
+    <div class="section-rule"></div>
+  </div>
+  <div class="parlay-wrap">
+    <div class="parlay-banner">
+      <div>
+        <div class="parlay-label">${legs.length}-Leg Parlay</div>
+        <div style="font-size:10px;color:var(--gold);opacity:0.6;margin-top:3px;font-style:italic">$100 returns $${payout}</div>
+      </div>
+      <div class="parlay-payout">${parlayAm}</div>
+    </div>
+    <div class="parlay-body">
+      ${legs.map((b,i) => {
+        const isPos = parseInt(b.best_odds_american) > 0;
+        const odds = isPos ? '+'+b.best_odds_american : String(b.best_odds_american);
+        return `
+        <div class="parlay-leg">
+          <div class="leg-num">${i+1}</div>
+          <div class="leg-info">
+            <div class="leg-team">${b.team}</div>
+            <div class="leg-game">${b.game} · ${b.best_bookmaker}</div>
+          </div>
+          <div class="leg-odds">${odds}</div>
+        </div>`;
+      }).join('')}
+      <div class="parlay-note">
+        ⚠ All ${legs.length} legs must win for payout. This parlay combines our top picks by model edge.
+        Consider betting each pick individually to reduce variance.
+      </div>
+    </div>
+  </div>`;
+}
+
+// ─── LONGSHOT PAGE ────────────────────────────────────────────────────────────
+function buildLongshotPage(bets) {
+  const ls = bets.filter(b => parseInt(b.best_odds_american) >= 150)
+                 .sort((a,b) => parseInt(b.best_odds_american)-parseInt(a.best_odds_american))[0];
+
+  const header = `<div class="section-header"><div class="section-rule"></div><div class="section-title">Longshot of the Day</div><div class="section-rule"></div></div>`;
+
+  if (!ls) return header + `<div class="no-data">No longshot picks today above +150.<br>All value bets are near even money.</div>`;
+
+  const isPos = parseInt(ls.best_odds_american) > 0;
+  const odds = isPos ? '+'+ls.best_odds_american : String(ls.best_odds_american);
+  const payout = Math.round((parseInt(ls.best_odds_american)/100+1)*100);
+
+  return header + `
+  <div class="longshot-wrap">
+    <div class="longshot-banner">
+      <div class="longshot-icon">🎲</div>
+      <div class="longshot-label">Longshot of the Day</div>
+      <div class="longshot-odds">${odds}</div>
+    </div>
+    <div style="padding:16px 18px">
+      <div class="longshot-callout">
+        <strong>High upside pick.</strong> The data sees significant value the books are missing.
+        A $100 wager returns <strong>$${payout}</strong> if correct.
+        Model confidence: <strong>${ls.model_prob_pct?ls.model_prob_pct.toFixed(0):'—'}%</strong>
+        vs book implied <strong>${ls.best_book_implied_pct?ls.best_book_implied_pct.toFixed(0):'—'}%</strong>.
+        This is a calculated risk — not a lock.
+      </div>
+      ${buildPickPage(ls, '★', '—')}
+    </div>
+  </div>`;
+}
+
+// ─── RESULTS PAGE ─────────────────────────────────────────────────────────────
+function buildResultsPage(results) {
+  const header = `<div class="section-header"><div class="section-rule"></div><div class="section-title">Yesterday's Results</div><div class="section-rule"></div></div>`;
+
+  if (!results.length) return header + `
+  <div class="results-wrap">
+    <div class="results-banner">
+      <div class="results-label">Yesterday's Results</div>
+      <div class="results-record">—</div>
+    </div>
+    <div class="no-data">No results logged yet.<br>Results appear here automatically after each day's games complete.</div>
+  </div>`;
+
+  const wins    = results.filter(r => r.result==='W').length;
+  const losses  = results.filter(r => r.result==='L').length;
+  const pending = results.filter(r => r.result==='P').length;
+  const record  = `${wins}W - ${losses}L${pending?' - '+pending+'P':''}`;
+
+  return header + `
+  <div class="results-wrap">
+    <div class="results-banner">
+      <div class="results-label">Yesterday's Results</div>
+      <div class="results-record">${record}</div>
+    </div>
+    <div class="results-body">
+      ${results.map(r => {
+        const cls   = r.result==='W' ? 'win' : r.result==='L' ? 'loss' : 'pending';
+        const label = r.result==='W' ? 'W'   : r.result==='L' ? 'L'   : '—';
+        return `
+        <div class="result-row">
+          <div class="result-indicator ${cls}">${label}</div>
+          <div class="result-info">
+            <div class="result-team">${r.team||'—'}</div>
+            <div class="result-game">${r.game||''}</div>
+          </div>
+          <div class="result-odds">${r.best_odds||'—'}</div>
+        </div>`;
+      }).join('')}
+    </div>
+  </div>`;
+}
+
+// ─── NAVIGATION ───────────────────────────────────────────────────────────────
+function buildDots() {
+  const dots = document.getElementById('navDots');
+  dots.innerHTML = '';
+  for (let i = 0; i < totalPages; i++) {
+    const d = document.createElement('div');
+    d.className = 'nav-dot' + (i===0?' active':'');
+    d.onclick = () => goTo(i);
+    dots.appendChild(d);
+  }
+}
+
+function navigate(dir) { goTo(currentPage + dir); }
+
+function goTo(idx) {
+  if (idx < 0 || idx >= totalPages) return;
+  currentPage = idx;
+
+  const track = document.getElementById('pagesTrack');
+  track.style.transform = `translateX(-${currentPage * 100}%)`;
+
+  updateNav();
+}
+
+function updateNav() {
+  document.getElementById('prevBtn').disabled = currentPage === 0;
+  document.getElementById('nextBtn').disabled = currentPage === totalPages - 1;
+  document.getElementById('navLabel').textContent = pageLabels[currentPage] || '—';
+
+  // Update dots
+  document.querySelectorAll('.nav-dot').forEach((d,i) => {
+    d.classList.toggle('active', i === currentPage);
+  });
+
+  // Update tabs
+  document.querySelectorAll('.tab-btn').forEach((t,i) => {
+    t.classList.toggle('active', i === currentPage);
+  });
+
+  // Scroll tab into view
+  const tabs = document.getElementById('sectionTabs');
+  const activeTab = tabs.querySelectorAll('.tab-btn')[currentPage];
+  if (activeTab) activeTab.scrollIntoView({ behavior:'smooth', block:'nearest', inline:'center' });
+}
+
+// ─── SWIPE SUPPORT ────────────────────────────────────────────────────────────
+function setupSwipe() {
+  let startX = 0;
+  const track = document.getElementById('pagesTrack');
+
+  track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, {passive:true});
+  track.addEventListener('touchend', e => {
+    const diff = startX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) navigate(diff > 0 ? 1 : -1);
+  }, {passive:true});
+}
+
+// ─── SAMPLE DATA ──────────────────────────────────────────────────────────────
+function getSampleData() {
+  return [
+    {
+      game:"Kansas City Royals vs Chicago White Sox", time:"Thu May 14  07:41 PM Eastern Daylight Time",
+      team:"Chicago White Sox", best_bookmaker:"Hard Rock Bet",
+      best_odds_american:120, best_odds:"+120",
+      best_book_implied_pct:45.5, market_avg_prob_pct:46.4, model_prob_pct:65.3, edge_pp:19.9,
+      home_pitcher:"Anthony Kay", away_pitcher:"Kris Bubic",
+      home_pitcher_era:"3.45", away_pitcher_era:"4.12",
+      home_pitcher_fip:"3.67", away_pitcher_fip:"4.23",
+      home_pitcher_k9:"9.2", away_pitcher_k9:"7.8",
+      home_pitcher_siera:"3.80", away_pitcher_siera:"4.40",
+      home_pitcher_k_bb:0.18,
+      home_wins:21, home_losses:21, away_wins:19, away_losses:24,
+      home_form_l10:"6-4", away_form_l10:"3-7",
+      home_streak:"W4", away_streak:"L3",
+      home_run_diff:-12, away_run_diff:-16,
+      home_runs_per_game:4.36, home_roster_wrc:113,
+      home_staff_era:"4.21", venue:"Rate Field", park_factor:0.97,
+      weather_temp_f:56.8, weather_wind_mph:8.6, weather_precip_pct:0,
+      writeup:"The White Sox return home tonight as live underdogs the books have badly mispriced. Anthony Kay has quietly been one of the steadier arms in the American League — his 3.67 FIP tells a better story than his record suggests, and he draws a Kansas City lineup that has scuffled through seven losses in their last ten. The Royals are 0-and-6 on the road when facing pitchers with a strikeout rate above nine per nine innings. Chicago at plus money is free money. Take it."
+    },
+    {
+      game:"St. Louis Cardinals vs Athletics", time:"Thu May 14  03:06 PM Eastern Daylight Time",
+      team:"St. Louis Cardinals", best_bookmaker:"FanDuel",
+      best_odds_american:144, best_odds:"+144",
+      best_book_implied_pct:41.0, market_avg_prob_pct:41.8, model_prob_pct:51.8, edge_pp:10.8,
+      home_pitcher:"Jacob Lopez", away_pitcher:"Michael McGreevy",
+      home_pitcher_era:"2.45", away_pitcher_era:"3.89",
+      home_pitcher_fip:"2.80", away_pitcher_fip:"3.95",
+      home_pitcher_k9:"10.1", away_pitcher_k9:"8.4",
+      home_pitcher_siera:"3.10", away_pitcher_siera:"4.05",
+      home_wins:24, home_losses:17, away_wins:21, away_losses:20,
+      home_form_l10:"6-4", away_form_l10:"4-6",
+      home_streak:"W1", away_streak:"L2",
+      home_run_diff:5, away_run_diff:-8,
+      home_runs_per_game:4.68, home_roster_wrc:117,
+      venue:"Sutter Health Park", park_factor:1.02,
+      weather_temp_f:77.7, weather_wind_mph:5.2, weather_precip_pct:0,
+      writeup:"Jacob Lopez has been the best story nobody is talking about in the National League — a 2.80 FIP and north of ten strikeouts per nine innings against a Sacramento lineup that ranks below average in runs created. The Cardinals lineup is clicking, posting a 117 wRC+ that puts them firmly above the league mean. McGreevy has the look of a pitcher due for regression, and St. Louis at plus money is the kind of line that disappears by first pitch. Stop the presses."
+    },
+    {
+      game:"Philadelphia Phillies vs Boston Red Sox", time:"Thu May 14  06:46 PM Eastern Daylight Time",
+      team:"Philadelphia Phillies", best_bookmaker:"Bally Bet",
+      best_odds_american:-107, best_odds:"-107",
+      best_book_implied_pct:51.7, market_avg_prob_pct:52.2, model_prob_pct:59.8, edge_pp:8.1,
+      home_pitcher:"Ranger Suarez", away_pitcher:"Jesus Luzardo",
+      home_pitcher_era:"3.12", away_pitcher_era:"3.78",
+      home_pitcher_fip:"3.34", away_pitcher_fip:"3.91",
+      home_pitcher_k9:"9.8", away_pitcher_k9:"8.9",
+      home_pitcher_siera:"3.55", away_pitcher_siera:"3.98",
+      home_wins:20, home_losses:23, away_wins:18, away_losses:24,
+      home_form_l10:"7-3", away_form_l10:"5-5",
+      home_streak:"L1", away_streak:"W1",
+      home_run_diff:-33, away_run_diff:-11,
+      home_runs_per_game:4.02, home_roster_wrc:106,
+      venue:"Citizens Bank Park", park_factor:1.05,
+      weather_temp_f:68.2, weather_wind_mph:6.1, weather_precip_pct:5,
+      writeup:"Ranger Suarez brings a 3.34 FIP into Citizens Bank Park tonight, and the numbers suggest he is pitching considerably better than his record shows. Boston sends Jesus Luzardo, who has the stuff but has been inconsistent with his command — a dangerous recipe against a Phillies lineup that knows how to work counts. The model gives Philadelphia a meaningful edge the books are not yet pricing in. Nearly even money on the home team with this matchup is a gift."
+    }
+  ];
+}
+</script>
+</body>
+</html>
